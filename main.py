@@ -7,8 +7,15 @@ def user_choice():
 
         if choice in (0,1,2,3):
             if choice == 0:
-                # add contact
-                print("add contact")
+                while True:
+                    name = input("Contact name: ")
+                    phone = input("Phone number: ")
+                    # contacts key is name and value is phone number
+                    contacts[name] = phone
+                    print(contacts)
+
+                    # need to break out of askinf for new contact
+
             elif choice == 1:
                 # view contact
                 print("view contact")
