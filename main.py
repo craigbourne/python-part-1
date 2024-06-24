@@ -6,6 +6,10 @@ def add_contact():
         name = input("Contact name: ")
         phone = input("Phone number: ")
 
+        # check first name of contact. Adding "Tom Jones" should output "Tom"
+        first_name = name.split(" ")[0]
+        print(f"\nFirst name of contact is {first_name}")
+
         # contacts key is name and value is phone number
         contacts[name] = phone
         print(contacts)
