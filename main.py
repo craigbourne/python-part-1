@@ -22,12 +22,25 @@ def user_choice():
         if choice in (0,1,2):
             if choice == 0: add_contact()
             elif choice == 1:
-                # search contact
-                print("search contact ")
-                
+                if contacts == {}: print("Contacts list is empty.")
+                else:
+                    while True:
+                        print("\nCurrent contact list:")
+                        for contact in contacts.keys():
+                            print(contact)
 
+                        contact_name = input("\nWhich contact from the list above would you like to view? ")
 
+                        if contact_name in contacts:
+                            print(f"\nContact details for {contact_name}:")
 
+                            for contact in contacts[contact_name]: 
+                                # prints desired contact details
+                                print(f"Name: {contact_name}\nNumber: {contacts[contact_name]}")
+                            # ask to continue or break out of for loop
+                            if input("\nSearch contacts again? (y/n) ").lower() != 'y': break
+                        else: 
+                                print("\nNo such contact exists")
 
             else:
                 # delete contact
