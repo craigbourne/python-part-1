@@ -76,13 +76,10 @@ def sort_contacts():
     if contacts == {}: print("Contacts list is empty so cannot be sorted.")
     else:
         while True:
-        #prints list of current contacts
-            # print("\nCurrent contact list:")
-            # for contact in contacts.keys():
-            #     print(contact)
-            
+            # ask the user if they would like to sort alphabetically
             sort_prompt = input("\nWould you like to sort contacts alphabetically? (y/n) ").lower()
-
+            
+            # if so, sort the contacts alphabetically by the key name and print to terminal to check sort has happened
             if sort_prompt == 'y':
                 sorted_contacts = sorted(contacts.items())
                 print("Sorted contacts: ")
