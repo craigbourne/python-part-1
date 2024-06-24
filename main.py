@@ -72,14 +72,33 @@ def delete_contact():
             else: 
                 print("\nThis contact cannot be deleted as it does not exist.")
 
+def sort_contacts():
+    if contacts == {}: print("Contacts list is empty so cannot be sorted.")
+    else:
+        while True:
+        #prints list of current contacts
+            # print("\nCurrent contact list:")
+            # for contact in contacts.keys():
+            #     print(contact)
+            
+            sort_prompt = input("\nWould you like to sort contacts alphabetically? (y/n) ").lower()
+
+            if sort_prompt == 'y':
+                sorted_contacts = sorted(contacts.items())
+                print("Sorted contacts: ")
+                for contact in sorted_contacts:
+                    print(contact)
+            else: break
+
 # ask the user what they want to do
 def user_choice():
     while True:
-        choice = int(input("\n What would you like to do? \n[0] add contact \n[1] search contact \n[2] delete contact \n"))
+        choice = int(input("\n What would you like to do? \n[0] add contact \n[1] search contact \n[2] sort contacts \n[3] delete contact \n"))
 
         if choice in (0,1,2):
             if choice == 0: add_contact()
             elif choice == 1: search_contact()
+            elif choice == 2: sort_contacts()
             else: delete_contact()
         else:
             print("That choice is not valid, please try again.")
