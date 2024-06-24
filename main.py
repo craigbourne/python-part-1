@@ -29,7 +29,7 @@ def search_contact():
 
             # checks if contact exists in the list
             if contact_name in contacts:
-                print(f"\nContact details for {contact_name}: ")
+                print(f"\nContact details for {contact_name}:")
 
                 for contact in contacts[contact_name]: 
                     # prints desired contact details
@@ -38,11 +38,11 @@ def search_contact():
                 if input("\nSearch contacts again? (y/n) ").lower() != 'y': break
                 
             else: 
-                    print("\nNo such contact exists")
+                    print("\nNo such contact exists.")
 
 def delete_contact():
     #checks if content list has any data to delete
-    if contacts == {}: print("\nContacts list is empty. Nothing to delete. ")
+    if contacts == {}: print("\nContacts list is empty. Nothing to delete.")
     else:
         while True:
             #prints list of current contacts
@@ -62,15 +62,15 @@ def delete_contact():
                 for contact in contacts.keys():
                     print(contact)
 
-                # Check if user wants to continuie deleting contacts, if not then exit the delete functionality
+                # Check if user wants to continue deleting contacts, if not then exit the delete functionality
                 if input("\nWould you like to delete another contact? (y/n) ").lower() != 'y': break
                 # Check again that contacts has data to delete
                 if contacts == {}: 
-                    print("Contacts list is empty. Nothing to delete. ")
+                    print("Contacts list is empty. Nothing to delete.")
                     break
             #Otherwise tell user name is not in contacts list
             else: 
-                print("This contact cannot be deleted as it does not exist.")
+                print("\nThis contact cannot be deleted as it does not exist.")
 
 # ask the user what they want to do
 def user_choice():
