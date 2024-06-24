@@ -10,9 +10,35 @@ def add_contact():
         contacts[name] = phone
         print(contacts)
 
-    # need to break out of loop asking for new contact
+        # break out of loop asking for new contact
         if input("Would you like to add another contact? (y/n) : ").lower() != 'y':
             break
+
+def search_contact():
+    #checks if content list is empty
+    if contacts == {}: print("Contacts list is empty.")
+    else:
+        while True:
+            #prints list of current contacts
+            print("\nCurrent contact list:")
+            for contact in contacts.keys():
+                print(contact)
+
+            # asks for contact to search
+            contact_name = input("\nWhich contact from the list above would you like to view? ")
+
+            # checks if contact exists in the list
+            if contact_name in contacts:
+                print(f"\nContact details for {contact_name}:")
+
+                for contact in contacts[contact_name]: 
+                    # prints desired contact details
+                    print(f"Name: {contact_name}\nNumber: {contacts[contact_name]}")
+                # asks user to continue or break out of for loop
+                if input("\nSearch contacts again? (y/n) ").lower() != 'y': break
+                
+            else: 
+                    print("\nNo such contact exists")
 
 # ask the user what they want to do
 def user_choice():
@@ -21,27 +47,7 @@ def user_choice():
 
         if choice in (0,1,2):
             if choice == 0: add_contact()
-            elif choice == 1:
-                if contacts == {}: print("Contacts list is empty.")
-                else:
-                    while True:
-                        print("\nCurrent contact list:")
-                        for contact in contacts.keys():
-                            print(contact)
-
-                        contact_name = input("\nWhich contact from the list above would you like to view? ")
-
-                        if contact_name in contacts:
-                            print(f"\nContact details for {contact_name}:")
-
-                            for contact in contacts[contact_name]: 
-                                # prints desired contact details
-                                print(f"Name: {contact_name}\nNumber: {contacts[contact_name]}")
-                            # ask to continue or break out of for loop
-                            if input("\nSearch contacts again? (y/n) ").lower() != 'y': break
-                        else: 
-                                print("\nNo such contact exists")
-
+            elif choice == 1: search_contact()
             else:
                 # delete contact
                 print("delete contact ")
