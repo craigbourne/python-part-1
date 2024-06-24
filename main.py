@@ -29,7 +29,7 @@ def search_contact():
 
             # checks if contact exists in the list
             if contact_name in contacts:
-                print(f"\nContact details for {contact_name}:")
+                print(f"\nContact details for {contact_name}: ")
 
                 for contact in contacts[contact_name]: 
                     # prints desired contact details
@@ -40,6 +40,38 @@ def search_contact():
             else: 
                     print("\nNo such contact exists")
 
+def delete_contact():
+    #checks if content list has any data to delete
+    if contacts == {}: print("\nContacts list is empty. Nothing to delete. ")
+    else:
+        while True:
+            #prints list of current contacts
+            print("\nCurrent contact list:")
+            for contact in contacts.keys():
+                print(contact)
+            
+            # Ask user for a contact to delete
+            delete_contact = input("\nWhich contact would you like to delete? ")
+
+            #check if name exists in contacts dict
+            if delete_contact in contacts:
+                # if it does exist delete the contact and show the remaining contacts
+                del contacts[delete_contact]
+                print("\nContact deleted.")
+                print("\nCurrent contact list:")
+                for contact in contacts.keys():
+                    print(contact)
+
+                # Check if user wants to continuie deleting contacts, if not then exit the delete functionality
+                if input("\nWould you like to delete another contact? (y/n) ").lower() != 'y': break
+                # Check again that contacts has data to delete
+                if contacts == {}: 
+                    print("Contacts list is empty. Nothing to delete. ")
+                    break
+            #Otherwise tell user name is not in contacts list
+            else: 
+                print("This contact cannot be deleted as it does not exist.")
+
 # ask the user what they want to do
 def user_choice():
     while True:
@@ -48,10 +80,8 @@ def user_choice():
         if choice in (0,1,2):
             if choice == 0: add_contact()
             elif choice == 1: search_contact()
-            else:
-                # delete contact
-                print("delete contact ")
+            else: delete_contact()
         else:
-            print("Invalid Choice. Please Try Again.")
+            print("That choice is not valid, please try again.")
 
 user_choice()
