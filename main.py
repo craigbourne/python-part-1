@@ -19,11 +19,12 @@ def add_contact():
             break
 
 def search_contact():
-    #checks if content list is empty
-    if contacts == {}: print("Contacts list is empty.")
+    # checks if content list is empty
+    if contacts == {}: 
+        print("Contacts list is empty.")
     else:
         while True:
-            #prints list of current contacts
+            # prints list of current contacts
             print("\nCurrent contact list:")
             for contact in contacts.keys():
                 print(contact)
@@ -34,22 +35,21 @@ def search_contact():
             # checks if contact exists in the list
             if contact_name in contacts:
                 print(f"\nContact details for {contact_name}:")
-
-                for contact in contacts[contact_name]: 
-                    # prints desired contact details
-                    print(f"Name: {contact_name}\nNumber: {contacts[contact_name]}")
-                # asks user to continue or break out of for loop
-                if input("\nSearch contacts again? (y/n) ").lower() != 'y': break
+                print(f"Name: {contact_name}\nNumber: {contacts[contact_name]}")
                 
+                # asks user to continue or break out of loop
+                if input("\nSearch contacts again? (y/n) ").lower() != 'y':
+                    break
             else: 
-                    print("\nNo such contact exists.")
+                print("\nNo such contact exists.")
 
 def delete_contact():
-    #checks if content list has any data to delete
-    if contacts == {}: print("\nContacts list is empty. Nothing to delete.")
+    # checks if content list has any data to delete
+    if contacts == {}: 
+        print("\nContacts list is empty. Nothing to delete.")
     else:
         while True:
-            #prints list of current contacts
+            # prints list of current contacts
             print("\nCurrent contact list:")
             for contact in contacts.keys():
                 print(contact)
@@ -57,7 +57,7 @@ def delete_contact():
             # Ask user for a contact to delete
             delete_contact = input("\nWhich contact would you like to delete? ")
 
-            #check if name exists in contacts dict
+            # check if name exists in contacts dict
             if delete_contact in contacts:
                 # if it does exist delete the contact and show the remaining contacts
                 del contacts[delete_contact]
@@ -67,17 +67,19 @@ def delete_contact():
                     print(contact)
 
                 # Check if user wants to continue deleting contacts, if not then exit the delete functionality
-                if input("\nWould you like to delete another contact? (y/n) ").lower() != 'y': break
+                if input("\nWould you like to delete another contact? (y/n) ").lower() != 'y':
+                    break
                 # Check again that contacts has data to delete
                 if contacts == {}: 
                     print("Contacts list is empty. Nothing to delete.")
                     break
-            #Otherwise tell user name is not in contacts list
+            # Otherwise tell user name is not in contacts list
             else: 
                 print("\nThis contact cannot be deleted as it does not exist.")
 
 def sort_contacts():
-    if contacts == {}: print("Contacts list is empty so cannot be sorted.")
+    if contacts == {}:
+        print("Contacts list is empty so cannot be sorted.")
     else:
         while True:
             # ask the user if they would like to sort alphabetically
@@ -85,22 +87,30 @@ def sort_contacts():
             
             # if so, sort the contacts alphabetically by the key name and print to terminal to check sort has happened
             if sort_prompt == 'y':
-                sorted_contacts = sorted(contacts.items())
+                sorted_contacts = dict(sorted(contacts.items()))
                 print("Sorted contacts: ")
-                for contact in sorted_contacts:
+                for contact in sorted_contacts.items():
                     print(contact)
-            else: break
+                # Replace original contacts dictionary with sorted one
+                contacts.clear()
+                contacts.update(sorted_contacts)
+            else:
+                break
 
 # ask the user what they want to do
 def user_choice():
     while True:
         choice = int(input("\n What would you like to do? \n[0] add contact \n[1] search contact \n[2] sort contacts \n[3] delete contact \n"))
 
-        if choice in (0,1,2):
-            if choice == 0: add_contact()
-            elif choice == 1: search_contact()
-            elif choice == 2: sort_contacts()
-            else: delete_contact()
+        if choice in (0, 1, 2, 3):
+            if choice == 0: 
+                add_contact()
+            elif choice == 1: 
+                search_contact()
+            elif choice == 2: 
+                sort_contacts()
+            elif choice == 3: 
+                delete_contact()
         else:
             print("That choice is not valid, please try again.")
 
