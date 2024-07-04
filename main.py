@@ -88,12 +88,13 @@ def sort_contacts():
             # if so, sort the contacts alphabetically by the key name and print to terminal to check sort has happened
             if sort_prompt == 'y':
                 sorted_contacts = dict(sorted(contacts.items()))
-                print("Sorted contacts: ")
+                print("\nSorted contacts: ")
                 for contact in sorted_contacts.items():
                     print(contact)
                 # Replace original contacts dictionary with sorted one
                 contacts.clear()
                 contacts.update(sorted_contacts)
+                break
             else:
                 break
 
