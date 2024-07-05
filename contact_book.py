@@ -1,4 +1,4 @@
-contacts = {}
+contacts = {} # dictionary to store deleted contacts
 deleted_contacts = {}  # dictionary to store deleted contacts
 
 def add_contact():
