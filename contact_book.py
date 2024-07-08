@@ -1,8 +1,12 @@
-contacts = {} # dictionary to store deleted contacts
+contacts = {} # dictionary to store contacts
 deleted_contacts = {}  # dictionary to store deleted contacts
 
 def add_contact():
     while True:
+        # confirm adding a new contact
+        if input("Are you sure you want to add a new contact? (y/n) ").lower() != 'y':
+            break
+        
         # collect name and number
         name = input("Contact name: ")
         phone = input("Phone number: ")
@@ -25,6 +29,10 @@ def search_contact():
         print("Contacts list is empty.")
     else:
         while True:
+            # confirm searching for a contact
+            if input("Are you sure you want to search for a contact? (y/n) ").lower() != 'y':
+                break
+            
             # prints list of current contacts
             print("\nCurrent contact list:")
             for contact in contacts.keys():
@@ -88,6 +96,10 @@ def restore_contact():
         print("No deleted contacts to restore.")
     else:
         while True:
+            # confirm restoring a contact
+            if input("Are you sure you want to restore a contact? (y/n) ").lower() != 'y':
+                break
+            
             # prints list of deleted contacts
             print("\nDeleted contact list:")
             for contact in deleted_contacts.keys():
@@ -111,6 +123,10 @@ def sort_contacts():
         print("Contacts list is empty so cannot be sorted.")
     else:
         while True:
+            # confirm sorting contacts
+            if input("Are you sure you want to sort the contacts? (y/n) ").lower() != 'y':
+                break
+            
             # ask the user if they would like to sort alphabetically
             sort_prompt = input("\nWould you like to sort contacts alphabetically? (y/n) ").lower()
             
